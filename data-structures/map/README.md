@@ -19,6 +19,8 @@ The Hash table data structure stores elements in key-value pairs where
 
 ### Hashing
 
+![hash map](image-1.png)
+
 Hashing is a technique of mapping a large set of arbitrary data to tabular indexes using a hash function. It is a method for representing dictionaries for large datasets.
 
 A good hashing function should have the following properties:
@@ -33,7 +35,24 @@ these bits will collide)
 
 It allows lookups, updating and retrieval operation to occur in a constant time i.e. O(1).
 
-![hash map  ](image-1.png)
+#### Hash Collision
+
+A collision occurs when a hash function generates the same key for two or more values. There are two ways to handle collisions:
+
+- Separate chaining
+- Linear probing
+
+#### Time Complexity
+
+|Operation|Worst Case|Average Case|
+| --- | --- | --- |
+|Search|O(n)|O(1)|
+|Insertion|O(n)|O(1)|
+|Deletion|O(n)|O(1)|
+
+#### Space Complexity
+
+O(n)
 
 ## References
 
@@ -44,3 +63,5 @@ It allows lookups, updating and retrieval operation to occur in a constant time 
 <https://www.geeksforgeeks.org/introduction-to-map-data-structure-and-algorithm-tutorials/>
 
 <https://www.cs.umd.edu/class/fall2019/cmsc420-0201/Lects/lect10-hash-basics.pdf>
+
+(Chapter 8 - Hashing) Michael McMillan - Data Structures and Algorithms with JavaScript - Bringing classic computing approaches to the Web - O'Reilly Media (2014)
