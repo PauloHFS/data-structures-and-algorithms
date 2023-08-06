@@ -176,7 +176,7 @@ console.assert(list.size === 0, 'list size should be 0', {
   size: list.size,
   isEmptyReturn: list.isEmpty(),
 });
-process.stdout.write('\t✅ Tests passed\n');
+process.stdout.write('\t✅ Tests finished\n');
 
 process.stdout.write('2. Testing the append method');
 list.append(1);
@@ -191,7 +191,7 @@ console.assert(list.isEquals([1, 2, 3, 4, 5]), 'list should be [1,2,3,4,5]', {
   data: list.data,
   isEqualsReturn: list.isEquals([1, 2, 3, 4, 5]),
 });
-process.stdout.write('\t✅ Tests passed\n');
+process.stdout.write('\t✅ Tests finished\n');
 
 process.stdout.write('3. Testing the remove method');
 list.remove(2);
@@ -200,7 +200,7 @@ console.assert(list.size === 4, 'list size should be 4');
 console.assert(list.isEquals([1, 2, 4, 5]), 'list should be [1,2,4,5]', {
   list: list.toString(),
 });
-process.stdout.write('\t✅ Tests passed\n');
+process.stdout.write('\t✅ Tests finished\n');
 
 process.stdout.write('4. Testing the resize operation');
 list.append(1);
@@ -211,4 +211,4 @@ list.append(5);
 
 // testing if the list is resized correctly
 console.assert(list.size === 9, 'list size should be 9');
-process.stdout.write('\t✅ Tests passed\n');
+process.stdout.write('\t✅ Tests finished\n');
