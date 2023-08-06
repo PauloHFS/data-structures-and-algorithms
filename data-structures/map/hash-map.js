@@ -1,3 +1,7 @@
+// todo: add more tests
+// todo: add collision handling
+// todo: add resize operation
+
 /**
  * Hash Map
  *
