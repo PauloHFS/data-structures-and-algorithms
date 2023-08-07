@@ -1,19 +1,25 @@
 // todo: add more tests
-// todo: add collision handling
 // todo: add resize operation
 
+// todo: add collision handling
+
 /**
- * Hash Map
+ * Hash Map (Hash Table) using separate chaining
  *
  * @class HashMap (Hash Table)
  */
 class HashMap {
+  /**
+   * @constructor
+   */
   constructor() {
     this._capacity = 137;
     this._prime = 37;
 
-    this._data = new Array(this._capacity);
+    this._table = new Array(this._capacity); // The list will only be added when there is a collision to avoid wasting memory and time
     this.size = 0;
+
+    this._table[0] = ['a', 'b', 'c', 'd'];
   }
 
   /**
@@ -27,12 +33,36 @@ class HashMap {
 
     console.log(`--> ${key} hashed to ${index}`);
 
-    if (this._data[index] !== undefined) {
-      console.log('Collision!');
+    this.size++;
+
+    // Collision handling
+    if (this._table[index] !== undefined) {
+      if (this._table[index][0] === key) {
+        this._table[index][1] = value;
+        return;
+      }
+
+      const previous_value = this._table[index];
+
+      // this._table[index] = [previous_value, [key, value]];
+      this._table[index] = [previous_value];
+
+      let i = 0;
+
+      while (i < this._table[index].length) {
+        if (this._table[index][i][0] === key) {
+          this._table[index][i][1] = value;
+          return;
+        }
+        i++;
+      }
+
+      this._table[index].push([key, value]);
+
+      return;
     }
 
-    this.size++;
-    this._data[index] = [key, value];
+    this._table[index] = [key, value];
   }
 
   /**
@@ -42,7 +72,7 @@ class HashMap {
   get(key) {
     const index = this._hash(key);
 
-    return this._data[index][1];
+    return this._table[index][1];
   }
 
   /**
@@ -52,7 +82,7 @@ class HashMap {
   has(key) {
     const index = this._hash(key);
 
-    return this._data[index] !== undefined;
+    return this._table[index] !== undefined;
   }
 
   /**
@@ -62,12 +92,12 @@ class HashMap {
   delete(key) {
     const index = this._hash(key);
 
-    if (this._data[index] === undefined) {
+    if (this._table[index] === undefined) {
       return false;
     }
 
     this.size--;
-    this._data[index] = undefined;
+    this._table[index] = undefined;
 
     return true;
   }
@@ -101,7 +131,27 @@ class HashMap {
   }
 
   toString() {
-    return this._data.toString();
+    const getText = (hash, value) => {
+      if (value.length > 2) {
+        return `  (${hash}): [${value
+          .map((key, value) => `${key}: ${value}`)
+          .join(', ')}]`;
+      }
+
+      return `  ${value[0]} (${hash}): ${value[1]}`;
+    };
+
+    let str = '{\n';
+
+    for (let i = 0; i < this._table.length; i++) {
+      if (this._table[i] !== undefined) {
+        str += getText(i, this._table[i]) + '\n';
+        // str += `  ${this._table[i][0]} (${i}): ${getText(this._table[i])}\n`;
+      }
+    }
+
+    str += '}';
+    return str;
   }
 }
 
@@ -136,3 +186,16 @@ console.assert(map.get('c') === 3, 'map.get("c") should be 3', {
 });
 
 process.stdout.write('\t✅ Tests finished\n');
+
+console.log('\n\n');
+
+const m = new HashMap();
+
+m.set('David', 1);
+m.set('Clayton', 1);
+m.set('Raymond', 2);
+m.set('Raymond', '22');
+
+console.log(m.toString());
+
+console.log(m._table);
