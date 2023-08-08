@@ -24,7 +24,7 @@ class List {
    *
    * @param {any} value value to add to the list
    */
-  append(value) {
+  add(value) {
     if (this.size === this.data.length) {
       this._resize();
     }
@@ -178,12 +178,12 @@ console.assert(list.size === 0, 'list size should be 0', {
 });
 process.stdout.write('\t✅ Tests finished\n');
 
-process.stdout.write('2. Testing the append method');
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
+process.stdout.write('2. Testing the add method');
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+list.add(5);
 
 console.assert(list.size === 5, 'list size should be 5');
 console.assert(list.isEquals([1, 2, 3, 4, 5]), 'list should be [1,2,3,4,5]', {
@@ -203,11 +203,11 @@ console.assert(list.isEquals([1, 2, 4, 5]), 'list should be [1,2,4,5]', {
 process.stdout.write('\t✅ Tests finished\n');
 
 process.stdout.write('4. Testing the resize operation');
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+list.add(5);
 
 // testing if the list is resized correctly
 console.assert(list.size === 9, 'list size should be 9');
