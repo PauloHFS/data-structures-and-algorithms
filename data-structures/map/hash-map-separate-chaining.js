@@ -18,8 +18,6 @@ class HashMap {
 
     this._table = new Array(this._capacity); // The list will only be added when there is a collision to avoid wasting memory and time
     this.size = 0;
-
-    this._table[0] = ['a', 'b', 'c', 'd'];
   }
 
   /**
