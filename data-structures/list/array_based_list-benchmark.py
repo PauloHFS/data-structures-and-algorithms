@@ -55,11 +55,11 @@ if __name__ == "__main__":
 
     timestamp = time.strftime("%Y-%m-%d-%H-%M-%S")
 
-    file_name = f'array_based_list-benchmark-{timestamp}.csv'
+    file_name = f'{os.path.basename(__file__).split(".")[0]}-{timestamp}.csv'
 
     print(f'\nSaving results to ./{file_name}')
 
-    with open(f'array_based_list-benchmark-{timestamp}.csv', mode='w') as csv_file:
+    with open(file_name, mode='w') as csv_file:
         fieldnames = ['test', 'time_ns', 'time_ms']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
