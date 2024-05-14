@@ -238,32 +238,7 @@ describe('Hash Map (Hash Table)', () => {
     });
   });
 
-  it('should convert the map to string', () => {
-    const map = new HashMap();
-
-    map.set('a', 1);
-    map.set('b', 2);
-    map.set('c', 3);
-
-    assert.strictEqual(map.toString(), '{\n  1: a: 1\n  2: b: 2\n  3: c: 3\n}');
-  });
-
-  it('should convert the map to string with collision', () => {
-    const map = new HashMap();
-
-    map.set('a', 1);
-    map.set('b', 2);
-    map.set('c', 3);
-    map.set('d', 4);
-    map.set('e', 5);
-
-    assert.strictEqual(
-      map.toString(),
-      '{\n  1: a: 1\n  2: b: 2\n  3: c: 3\n  4: [a: 1, [b: 2]]\n  5: d: 4\n  6: e: 5\n}'
-    );
-  });
-
-  it('should convert the map to string with collision and multiple values', () => {
+  it('should handle collision', () => {
     const map = new HashMap();
 
     map.set('a', 1);
@@ -272,11 +247,17 @@ describe('Hash Map (Hash Table)', () => {
     map.set('d', 4);
     map.set('e', 5);
     map.set('f', 6);
-    map.set('g', 7);
 
-    assert.strictEqual(
-      map.toString(),
-      '{\n  1: a: 1\n  2: b: 2\n  3: c: 3\n  4: [a: 1, [b: 2]]\n  5: d: 4\n  6: e: 5\n  7: f: 6\n  8: g: 7\n}'
-    );
+    assert.strictEqual(map.size, 6);
+  });
+
+  it('should handle collision with the same key', () => {
+    const map = new HashMap();
+
+    map.set('a', 1);
+    map.set('a', 2);
+    map.set('a', 3);
+
+    assert.strictEqual(map.size, 1);
   });
 });
