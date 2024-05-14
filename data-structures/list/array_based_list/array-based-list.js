@@ -85,6 +85,11 @@ class List {
   /**
    * Shift all elements to the right of the given index to the left by one
    *
+   * Time Complexity:
+   *
+   * - Average case: O(n)
+   * -   Worst case: O(n)
+   *
    * @param {number} index index to start shifting
    */
   _shiftLeft(index) {
@@ -95,6 +100,10 @@ class List {
 
   /**
    * Resize the list by doubling its capacity
+   *
+   * Time Complexity:
+   * - Average case: O(n)
+   * -   Worst case: O(n)
    */
   _resize() {
     const newData = new Array(this.data.length * 2);

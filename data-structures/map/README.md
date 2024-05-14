@@ -39,7 +39,7 @@ It allows lookups, updating and retrieval operation to occur in a constant time 
 
 A collision occurs when a hash function generates the same key for two or more values. There are two ways to handle collisions:
 
-- Separate chaining
+- Separate chaininsg
 - Linear probing
 
 #### Time Complexity
@@ -63,5 +63,9 @@ O(n)
 <https://www.geeksforgeeks.org/introduction-to-map-data-structure-and-algorithm-tutorials/>
 
 <https://www.cs.umd.edu/class/fall2019/cmsc420-0201/Lects/lect10-hash-basics.pdf>
+
+<https://www.geeksforgeeks.org/separate-chaining-collision-handling-technique-in-hashing/>
+
+<https://www.geeksforgeeks.org/open-addressing-collision-handling-technique-in-hashing/>
 
 (Chapter 8 - Hashing) Michael McMillan - Data Structures and Algorithms with JavaScript - Bringing classic computing approaches to the Web - O'Reilly Media (2014)
